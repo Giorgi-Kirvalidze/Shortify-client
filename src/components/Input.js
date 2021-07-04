@@ -5,8 +5,8 @@ const Input = ({ className, onChange, labelClassName, label, name, value, type, 
         <>
             <label className={labelClassName}  >{label}</label>
             <input
-                className={className}
                 name={name}
+                className={className}
                 type={type}
                 onChange={onChange}
                 placeholder={placeholder}

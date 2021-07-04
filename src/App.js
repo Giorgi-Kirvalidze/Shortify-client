@@ -5,6 +5,7 @@ import SigninScreen from './screens/Signin'
 import HomeScreen from './screens/Home'
 import ProtectedRoute from './HOC/PrivateRoute'
 import Dashboard from './screens/Dashboard'
+import './App.scss'
 
 const App = () => {
 
@@ -12,7 +13,7 @@ const App = () => {
   return (
     <Router>
       <div className="container ">
-        <main className="">
+        <main className="container__main">
           <Route exact path="/" component={HomeScreen} />
           <ProtectedRoute path="/dashboard" component={Dashboard} />
           <Route path="/signup" component={SignupScreen} />

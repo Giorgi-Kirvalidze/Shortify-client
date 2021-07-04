@@ -1,0 +1,58 @@
+.signin{
+    height:100vh;
+    width:100vw;
+    background-color: #8488d3e8;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    h1{
+        color: blueviolet;
+        text-align: center;
+        padding-bottom:20px;
+    }
+    h2{
+        text-align: center;
+        padding-bottom:40px;
+        cursor: pointer;
+    }
+    &__img{
+        width:150px;
+        height:130px;
+        margin:0 auto;
+        cursor:pointer
+    }
+    &--border{
+        padding:20px;
+        display: flex;
+        flex-direction: column;
+        animation: freeze 5s  infinite;
+        border-radius: 10px;
+    }
+}
+
+
+@keyframes freeze {
+  
+    0% { 
+        box-shadow: inset 10px 5px 20px  #89C4F4;
+
+    }
+    25% { 
+        box-shadow: inset 0 5px 500px  #89C4F4;
+
+     }
+    50% { 
+        box-shadow: inset 10px 5px 100px  #89C4F4;
+
+     }
+    75% {
+        box-shadow: inset 10px 5px 100px  #89C4F4;
+
+    }
+    100% { 
+        box-shadow: inset 0px 0px 10px  #89C4F4;
+
+     }
+  }
+   

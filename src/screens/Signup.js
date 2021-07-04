@@ -40,16 +40,17 @@ const Signup = () => {
     }
     return (
         <>
-            <div className="">
-                <div className="">
+            <div className="signup">
+                <div className="signup__message">
                     <Message variant="success">
                         {message}
                     </Message>
                 </div>
-                <form className="" onSubmit={handleSubmit}>
+                <form className="form" onSubmit={handleSubmit}>
                     <Input label="FirstName"
-                        labelClassName=""
-                        className="" type='text'
+                        labelClassName="form__label"
+                        className="form__input"
+                        type='text'
                         name="firstName"
                         placeholder="firstName"
                         value={account.firstName}
@@ -57,8 +58,8 @@ const Signup = () => {
                     />
                     <Input
                         label="Email Address"
-                        labelClassName=""
-                        className="" type='email'
+                        labelClassName="form__label"
+                        className="form__input" type='email'
                         name="email"
                         placeholder="email"
                         value={account.email}
@@ -66,8 +67,8 @@ const Signup = () => {
                     />
                     <Input
                         label="Password"
-                        labelClassName=""
-                        className=""
+                        labelClassName="form__label"
+                        className="form__input"
                         type='password'
                         name="password"
                         placeholder="password"
@@ -76,8 +77,8 @@ const Signup = () => {
                     />
                     <Input
                         label="LastName"
-                        labelClassName=""
-                        className=""
+                        labelClassName="form__label"
+                        className="form__input"
                         type='text'
                         name="lastName"
                         placeholder="lastName"
