@@ -5,11 +5,13 @@ import {
 } from "../actions/types";
 const initState = {
     urlData: {
-        clicks: Number,
+        clicks: 0,
         originUrl: '',
         shortUrl: '',
         urlId: '',
         date: '',
+        uniqueClick: 0,
+        clickedByUsers: []
     },
     loading: false,
     redirect: false,

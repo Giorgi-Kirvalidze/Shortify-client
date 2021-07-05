@@ -4,24 +4,27 @@ display:flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-background-color: cadetblue;
+background-color:#232b2b;
 
 font-family: sans-serif;
 button{
     margin-left: 2rem;
 }
+} 
+.recharts-responsive-container{
+  min-width: 480px;
+  transform: translateY(-50px);
 }
-.tooltip {
-    border-radius: 0.25rem;
-    background: #26313c;
-    color: #fff;
-    padding: 1rem;
-    box-shadow: 15px 30px 40px 5px rgba(0, 0, 0, 0.5);
-    text-align: center;
+  tspan{
+    fill:#fff !important;
+    transform: translateY(50px) !important;
   }
-  
-  /* hiding first and last lines in cartesian grid */
-  .recharts-wrapper .recharts-cartesian-grid-horizontal line:first-child,
-  .recharts-wrapper .recharts-cartesian-grid-horizontal line:last-child {
-    stroke-opacity: 0;
-  }
+
+
+
+.legend-item-1{
+  transform: translateX(150px);
+}
+.legend-item-0{
+  transform: translateX(-80px);
+}

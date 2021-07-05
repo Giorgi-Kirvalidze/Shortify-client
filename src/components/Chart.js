@@ -1,72 +1,72 @@
+import React from 'react';
+import { useSelector } from 'react-redux';
 import {
-    ResponsiveContainer,
-    AreaChart,
+    BarChart,
+    Bar,
     XAxis,
     YAxis,
-    Area,
-    Tooltip,
     CartesianGrid,
-} from "recharts";
-import { format, parseISO, subDays } from "date-fns";
+    Tooltip,
+    Legend,
+    LabelList,
+    ResponsiveContainer,
+} from 'recharts';
 
-const data = [];
-for (let num = 30; num >= 0; num--) {
-    data.push({
-        date: subDays(new Date(), num).toISOString().substr(0, 10),
-        value: 1 + Math.random(),
-    });
-}
 
-export default function Home() {
+const renderCustomizedLabel = (props) => {
+    const { x, y, width, value } = props;
+    const radius = 10;
     return (
-        <ResponsiveContainer width="100%" height={400}>
-            <AreaChart data={data}>
-                <defs>
-                    <linearGradient id="color" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stopColor="red" stopOpacity={0.8} />
-                        <stop offset="75%" stopColor="blue" stopOpacity={0.4} />
-                    </linearGradient>
-                </defs>
+        <g>
+            <circle cx={x + width / 2} cy={y - radius} r={radius} fill="#8884d8" />
+            <text x={x + width / 2} y={y - radius} fill="azure" textAnchor="middle" dominantBaseline="middle">
+                {value.split(' ')[1]}
+                {console.log(value)}
+            </text>
+        </g>
+    );
+};
 
-                <Area dataKey="value" stroke="violet" fill="url(#color)" />
 
-                <XAxis
-                    dataKey="date"
-                    axisLine={false}
-                    tickLine={false}
-                    tickFormatter={(str) => {
-                        const date = parseISO(str);
-                        if (date.getDate() % 7 === 0) {
-                            return format(date, "MMM, d");
-                        }
-                        return "";
+const Chart = () => {
+    const urlData = useSelector(state => state.url.urlData)
+    const totalClicks = urlData.clicks
+    const uniqueClicks = urlData.uniqueClick
+    const data = [
+        {
+            name: 'Clicks',
+            Unique: uniqueClicks,
+            Total: totalClicks,
+        },
+    ];
+    return (
+        <>
+            <div style={{ transform: `translateY(-80px)` }}>
+                <h1 style={{ color: '#ffffff' }}>Track your Unique visitors</h1>
+            </div>
+            <ResponsiveContainer width="50%" height="50%">
+                <BarChart
+                    data={data}
+                    margin={{
+                        top: 5,
+                        right: 30,
+                        left: 20,
+                        bottom: 5,
                     }}
-                />
-
-                <YAxis
-                    datakey="value"
-                    axisLine={false}
-                    tickLine={false}
-                    tickCount={8}
-                    tickFormatter={(number) => `$${number.toFixed(2)}`}
-                />
-
-                <Tooltip content={<CustomTooltip />} />
-
-                <CartesianGrid opacity={0.1} vertical={false} />
-            </AreaChart>
-        </ResponsiveContainer>
+                >
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="name" />
+                    <YAxis />
+                    <Tooltip cursor={{ stroke: '#0096FF', strokeWidth: 2 }} wrapperStyle={{ color: 'black' }} />
+                    <Legend />
+                    <Bar dataKey="Total" fill="#8884d8" minPointSize={5}>
+                        <LabelList dataKey="name" content={renderCustomizedLabel} />
+                    </Bar>
+                    <Bar dataKey="Unique" fill="#82ca9d" minPointSize={10} />
+                </BarChart>
+            </ResponsiveContainer>
+        </>
     );
 }
 
-function CustomTooltip({ active, payload, label }) {
-    if (active) {
-        return (
-            <div className="tooltip">
-                <h4>{format(parseISO(label), "eeee, d MMM, yyyy")}</h4>
-                <p>${payload[0].value.toFixed(2)} CAD</p>
-            </div>
-        );
-    }
-    return null;
-}
+export default Chart

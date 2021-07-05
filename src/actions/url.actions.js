@@ -22,11 +22,11 @@ export const shortenUrl = url => async dispatch => {
     }
 }
 
-export const redirectUrl = url => async dispatch => {
+export const redirectUrl = (url, userId) => async dispatch => {
     console.log(url)
     dispatch({ type: REDIRECT_URL_REQUEST })
     try {
-        const res = await axios.get(`/url/${url}`)
+        const res = await axios.get(`/url/${url}/${userId}`)
         console.log(res)
         if (res.status === 200) {
             dispatch({ type: REDIRECT_URL_SUCCESS })
