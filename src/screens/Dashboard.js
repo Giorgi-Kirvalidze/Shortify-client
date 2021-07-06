@@ -20,7 +20,8 @@ const Dashboard = () => {
 
     useEffect(() => {
         dispatch(shortenUrl(url, userId))
-    }, [totalClicks, uniqueClicks, userId, url, dispatch])
+        // eslint-disable-next-line
+    }, [totalClicks, uniqueClicks, userId, dispatch])
 
     const handleSubmit = (e) => {
         e.preventDefault()
