@@ -1,18 +1,21 @@
 .dashboard{
-height:100vh;
+  height:100%;
+min-height:100vh;
 display:flex;
-flex-direction: column;
-justify-content: center;
+flex-direction: row;
+justify-content: space-evenly;
 align-items: center;
 background-color:rgba(32, 29, 29, 0.945);
-
 font-family: sans-serif;
-button{
-    margin-left: 2rem;
+form{
+  display: flex;
+  justify-content: space-around;
 }
+
 } 
 .recharts-responsive-container{
   min-width: 480px;
+  min-height:400px;
   transform: translateY(-50px);
 }
   tspan{

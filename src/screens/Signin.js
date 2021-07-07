@@ -6,10 +6,12 @@ import { useSelector } from 'react-redux'
 import { Link, Redirect } from 'react-router-dom'
 import { formValid } from '../helpers/formValid'
 
-import './signin.css'
 
 const Signin = () => {
-    const [account, setAccount] = useState({})
+    const [account, setAccount] = useState({
+        email: '',
+        password: ''
+    })
     const [playing, setPlaying] = useState(false)
     const [isError, setIsError] = useState({
         email: '', password: ''
@@ -69,7 +71,6 @@ const Signin = () => {
     const stopMusic = () => {
         setPlaying(false)
     }
-    console.log(playing)
     return (
         <div className="signin">
             <div className="signin--border">
@@ -91,7 +92,7 @@ const Signin = () => {
                     </div>
                     <button onClick={stopMusic} className="liquidButton form__button">
                         <span style={{ fontSize: '15px', display: 'ruby' }}>Login 🐟</span>
-                        <div class="liquid"></div>
+                        <div className="liquid"></div>
                     </button>
                 </form>
             </div>

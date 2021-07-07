@@ -20,10 +20,7 @@ const Signup = () => {
 
     useEffect(() => {
         if (userAccount.authenticate === true) {
-            const timer = setTimeout(() => {
-                history.push('/signin')
-            }, 5000);
-            return () => clearTimeout(timer);
+            history.push('/signin')
         }
     }, [dispatch, history, userAccount.authenticate])
 

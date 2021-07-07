@@ -42,11 +42,12 @@ const Chart = () => {
     return (
         <>
             <div style={{ transform: `translateY(-80px)` }}>
-                <h1 style={{ color: '#ffffff' }}>Track your Unique visitors</h1>
+                <h1 style={{ color: '#ffffff', textAlign: 'center' }}>General link data</h1>
             </div>
-            <ResponsiveContainer width="50%" height="50%">
+            <ResponsiveContainer width="100%" height="50%">
                 <BarChart
                     data={data}
+                    height={400}
                     margin={{
                         top: 5,
                         right: 30,
